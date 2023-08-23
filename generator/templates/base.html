@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script>
+            function copyText() {
+                var quoteStr = "{{quote}}";
+                var br = "\n - ";
+                var authorStr = "{{author}}";
+                var string = quoteStr.concat(br.concat(authorStr));
+                navigator.clipboard.writeText(string);
+            }
+
+            // Add an event listener to the speak button
+            document.addEventListener("DOMContentLoaded", function() {
+                // Your code here, including the addEventListener line
+                var speakButton = document.getElementById("btnSp");
+                speakButton.addEventListener("click", function() {
+                    // Rest of your event handler code
+                    let text = "Quote of the day is {{quote}} by {{author}}";
+
+                // Create a new SpeechSynthesisUtterance object
+                let utterance = new SpeechSynthesisUtterance();
+
+                // Set the text and voice of the utterance
+                utterance.text = text;
+                utterance.voice = window.speechSynthesis.getVoices()[0];
+
+                // Speak the utterance
+                window.speechSynthesis.speak(utterance);
+                });
+            });
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                // Get a reference to the share button element
+                var shareButton = document.getElementById("btnS");
+
+                // Add a click event listener to the button
+                shareButton.addEventListener("click", function() {
+                    // Define the text you want to pre-fill in the Facebook post
+                    var tweetText = "{{quote}} - {{author}}";
+
+                    var twitterShareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
+
+                    window.open(twitterShareUrl, "_blank");
+                });
+            });
+
+        </script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <title>{{page}}</title>
+    </head>
+    <body>
+        {%block template%}
+        {%endblock%}
+    </body>
+</html>

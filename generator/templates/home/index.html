@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block template%}
+
+{% load static %}
+
+<div class="form" align="center">
+    <h1 class="heading">Quote of the day</h1>
+        <div class="quote-container">
+            <figure >
+            <blockquote class="blockquote">
+                <p>
+                    <span class="quote-image">
+                        <img src="{% static 'images/quote-start.png' %}" alt="❝" class="quote" align="left">
+                    </span>
+                    <h3 class="quote-text" id="quote-text-id">{{quote}}</h3>
+                    <span class="quote-image">
+                        <img src="{% static 'images/quote-end.png' %}" alt="❞" class="quote" align="right">
+                    </span>
+                </p>
+            <br>
+            </blockquote>
+            <figcaption class="blockquote-footer" align="right">
+                <cite title="Source Title" id="author-text-id">{{author}}</cite>
+            </figcaption>
+            </figure>
+        </div>
+    <a id="credit">{{footer}}</a>
+    <hr>
+    <div class="card-footer">
+        <div class = "circle-button-holder" align="left">
+            <span class = "circle-button1">
+                <button type="button" class="btn btn-primary btn-rounded" id="btnSp">
+                    <ion-icon name="volume-high-outline" class="volume"></ion-icon>
+                </button>
+            </span>
+            <span class = "circle-button2">
+                <button type="button" class="btn btn-primary btn-rounded"  id="btnC">
+                    <ion-icon name="copy-outline" class="copy" onclick="copyText()"></ion-icon>
+                </button>
+            </span>
+            <span class = "circle-button3">
+                <button type="button" class="btn btn-primary btn-rounded" id="btnS">
+                    <ion-icon name="logo-twitter" class="fb"></ion-icon>
+                </button>
+            </span>
+        </div>
+        <span class="btn-holder" align="right">
+            <button type="button" class="btn btn-primary btn-rounded" onclick="location.href='/gen'"  >New Quote</button>
+        </span>
+    </div>
+    
+</div>
+
+{% endblock %}
