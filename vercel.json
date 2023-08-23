@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "genQuo/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "genQuo/wsgi.py"
+      }
+    ]
+}
